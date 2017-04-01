@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Multas implements InterfazMultas
+public class ServidorMultas implements InterfazMultas
 {
     private final ArrayList<Vehiculo> vehiculos = new ArrayList();
     private final ArrayList<Conductor> conductores = new ArrayList();
@@ -50,7 +50,7 @@ public class Multas implements InterfazMultas
     {
         int pos = 0;
         
-        while(pos < conductores.size() && dni != conductores.get(dni).getDni())
+        while(pos < conductores.size() && dni != conductores.get(pos).getDni())
             pos++;
         
         if(pos < conductores.size())
@@ -191,7 +191,7 @@ public class Multas implements InterfazMultas
     
     // Métodos públicos del servidor:
     
-    public Multas()
+    public ServidorMultas()
     {
         
     }
@@ -219,16 +219,16 @@ public class Multas implements InterfazMultas
     @Override
     public LinkedList comprobarMultas(int dni, String mat) throws RemoteException 
     {
-        ArrayList<Multa> misMultas = new ArrayList();
+        LinkedList<Multa> misMultas = new LinkedList();
 
 	if(this.existeVehiculo(mat) != -1)
 	{
             for(Multa actual : multas) 
-                if(this.esMiMulta(dni, actual.getMat()))
+                if(mat.equalsIgnoreCase(actual.getMat()) && this.esMiMulta(dni, actual.getMat()))
                     misMultas.add(actual);
 	}
 
-	return (new LinkedList(misMultas));
+	return misMultas;
     }
 
     @Override
