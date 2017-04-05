@@ -1,4 +1,4 @@
-package servidor;
+
 
 import dgt.*;
 import java.rmi.RemoteException;

@@ -1,4 +1,4 @@
-package ssdd_rmi;
+
 
 import dgt.Multa;
 import java.rmi.registry.LocateRegistry;
@@ -6,9 +6,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.LinkedList;
 import java.util.Scanner;
-import servidor.*;
 
-public class SSDD_RMI 
+public class SSDD_RMI_Servidor 
 {
     public static void main(String[] args) 
     {
@@ -25,7 +24,7 @@ public class SSDD_RMI
             InterfazMultas stub = (InterfazMultas) UnicastRemoteObject.exportObject(servidor, Puerto);  
   
             registry = LocateRegistry.getRegistry(Puerto);  
-            registry.bind("Calculadora", stub);
+            registry.bind("Multas", stub);
             
             int DNI1 = 45134789, DNI2 = 45111786;
             String mat1 = "7861-HJI", mat2 = "5661-LLK", mat3 = "0988-HKP";
@@ -66,6 +65,8 @@ public class SSDD_RMI
             
             System.out.print("El conductor de DNI " + DNI2 + " tiene ");
             System.out.println(servidor.comprobarPuntos(DNI2, mat3));
+            
+            System.out.println("\nEsperando peticiones...");
         } 
         
         catch (Exception e) 
