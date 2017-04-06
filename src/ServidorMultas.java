@@ -203,15 +203,17 @@ public class ServidorMultas implements InterfazMultas
 
 	if(this.existeVehiculo(mat) != -1)
 	{
-		dniPropietario = propietarioVehiculo(mat);
-		pos = buscarUsuario(dniPropietario);
+            dniPropietario = propietarioVehiculo(mat);
+            
+            if(dni == dniPropietario)   // Si el vehículo es mío.
+                pos = buscarUsuario(dniPropietario);
 	}
 
 	if(pos == -1)
 		result = -1;
 
 	else
-		result = conductores.get(pos).getPuntos();
+            result = conductores.get(pos).getPuntos();
 
 	return result;
     }

@@ -66,6 +66,8 @@ public class SSDD_RMI_Servidor
             System.out.print("El conductor de DNI " + DNI2 + " tiene ");
             System.out.println(servidor.comprobarPuntos(DNI2, mat3));
             
+            // System.out.println(servidor.comprobarPuntos(DNI2, mat2));
+            
             System.out.println("\nEsperando peticiones...");
         } 
         
