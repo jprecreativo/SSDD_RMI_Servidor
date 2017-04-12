@@ -1,6 +1,8 @@
-package dgt;
 
-public class Multa 
+
+import java.io.Serializable;
+
+public class Multa implements Serializable
 {
     private String mat;
     private String fecha;
