@@ -1,5 +1,3 @@
-
-
 import dgt.*;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -7,9 +5,9 @@ import java.util.LinkedList;
 
 public class ServidorMultas implements InterfazMultas
 {
-    private final ArrayList<Vehiculo> vehiculos = new ArrayList();
-    private final ArrayList<Conductor> conductores = new ArrayList();
-    private final ArrayList<Multa> multas = new ArrayList();
+    private final ArrayList<Vehiculo> vehiculos; 
+    private final ArrayList<Conductor> conductores; 
+    private final ArrayList<Multa> multas; 
     
     // Métodos privados del servidor:
     
@@ -193,7 +191,9 @@ public class ServidorMultas implements InterfazMultas
     
     public ServidorMultas()
     {
-        
+        vehiculos = new ArrayList();
+        conductores = new ArrayList();
+        multas = new ArrayList();
     }
     
     @Override
